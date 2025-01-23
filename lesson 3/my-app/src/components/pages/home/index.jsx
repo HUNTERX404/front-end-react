@@ -5,7 +5,7 @@ import pic1 from "../../../assets/images/Iron-Man.jpeg";
 import pic2 from "../../../assets/images/Caption-America.jpeg";
 function HomePage() {
   return (
-    <header className="h-dvh">
+    <header className="h-dvh p-4 px-5 sm:py-3">
       <Swiper
         pagination={{
           dynamicBullets: true,
@@ -14,16 +14,16 @@ function HomePage() {
         className="mySwiper h-full"
       >
         <SwiperSlide className="h-full">
-          <img className="w-full h-full object-cover" src={pic1} />
+          <img className="h-full w-full object-cover" src={pic1} />
         </SwiperSlide>
         <SwiperSlide className="h-full">
-          <img className="w-full h-full object-cover" src={pic2} />
+          <img className="h-full w-full object-cover" src={pic2} />
         </SwiperSlide>
         <SwiperSlide className="h-full">
-          <img className="w-full h-full object-cover" src={pic1} />
+          <img className="h-full w-full object-cover" src={pic1} />
         </SwiperSlide>
         <SwiperSlide className="h-full">
-          <img className="w-full h-full object-cover" src={pic1} />
+          <img className="h-full w-full object-cover" src={pic1} />
         </SwiperSlide>
       </Swiper>
     </header>

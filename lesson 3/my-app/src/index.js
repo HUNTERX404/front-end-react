@@ -1,36 +1,61 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import {
+  BrowserRouter,
+  Outlet,
+  Route,
+  RouterProvider,
+  Routes,
+  createBrowserRouter,
+} from "react-router";
 import HomePage from "./components/pages/home";
 import AboutPage from "./components/pages/about";
-import Navbar from "./components/pages/layout/navbar";
+import Navbar from "./components/layout/navbar";
 import MoviePage from "./components/pages/movie";
 import Product from "./components/pages/movie/product";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 import "./index.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const route = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <Navbar></Navbar>
+        <Outlet />
+      </>
+    ),
+    children: [
+      {
+        path: "*",
+        element: (
+          <>
+            <h1 className="text-center font-bold text-4xl text-red-500">
+              not found
+            </h1>
+          </>
+        ),
+      },
+      { index: true, element: <HomePage /> },
+      { path: "/about", element: <AboutPage /> },
+      {
+        path: "/movies",
+        element: <Outlet />,
+        children: [
+          { element: <MoviePage />, index: true },
+          { path: ":productId", element: <Product /> },
+        ],
+      },
+    ],
+  },
+]);
 root.render(
   <>
-    <BrowserRouter>
+    <RouterProvider router={route}>
       <Navbar></Navbar>
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/about" element={<AboutPage />}></Route>
-        <Route
-          path="/movies"
-          element={
-            <>
-              <Outlet />
-            </>
-          }
-        >
-          <Route index element={<MoviePage />} />
-          <Route element={<Product />} path=":productId" />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    </RouterProvider>
   </>
 );
 
