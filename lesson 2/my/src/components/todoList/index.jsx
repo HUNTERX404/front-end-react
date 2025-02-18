@@ -32,7 +32,7 @@ export const TodoList = () => {
   return (
     <>
       <div className="container w-full px-8">
-        <h2 className="text-5xl my-5">Todo</h2>{" "}
+        <h2 className="text-5xl my-5">Todo</h2>
         <button
           className="p-4"
           onClick={() => {
