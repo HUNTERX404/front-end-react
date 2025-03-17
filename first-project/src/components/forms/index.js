@@ -1,3 +1,3 @@
 import { TextField } from "./Textfield";
-
-export { TextField };
+import { ImageField } from "./Imagefield";
+export { TextField, ImageField };
